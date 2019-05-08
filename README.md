@@ -4,13 +4,13 @@
 
 一个由C语言编写的，使用I/O复用的多进程HTTP服务器
 
-## build
+## 编译
 
-./build.sh
+gcc main.c -o server
 
-## run
+## 运行
 
-./Server
+./server
 
 ## 其他
 
