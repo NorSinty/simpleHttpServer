@@ -1,0 +1,16 @@
+image/bmp					bmp
+image/cgm					cgm
+image/g3fax					g3
+image/gif					gif
+image/jpeg					jpeg
+image/jpeg					jpg
+image/png					png
+image/x-icon				ico
+text/css					css
+text/csv					csv
+text/html					html
+video/3gpp					3gp
+video/mp4					mp4
+video/mpeg					mpeg
+video/x-msvideo				avi
+audio/x-flac                flac
