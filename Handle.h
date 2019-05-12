@@ -123,12 +123,12 @@ err:
     return -1;
 }
 
-int handleHttpHEAD(char *message)
+int handleHttpHEAD(char* message)
 {
 
 }
 
-int handleHttpPOST(char *message)
+int handleHttpPOST(char* message)
 {
 
 }

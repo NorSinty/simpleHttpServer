@@ -6,7 +6,7 @@ char*   root;
 
 void loadConf();
 
-int main(int argc, char** argv)
+int main()
 {
     loadConf();
 
@@ -14,9 +14,9 @@ int main(int argc, char** argv)
     bindSocket(listenfd, port);
     listenScoket(listenfd);
 
-    printf("Server info:\n");
-    printf("\tPort：\t%d\n", port);
-    printf("\tRoot：\t%s\n", root);
+    printf("服务器信息:\n");
+    printf("\t端口：\t%d\n", port);
+    printf("\t根目录：\t%s\n", root);
     printf("\n");
 
     acceptConnection(listenfd, root);
@@ -30,7 +30,7 @@ void loadConf()
     FILE *fp = fopen("conf.conf", "r");
 
     if (fp == NULL) {
-        perror("cannot load configure file");
+        perror("无法读取配置文件");
         exit(-1);
     }
 
@@ -38,7 +38,7 @@ void loadConf()
 
     fscanf(fp, "%s %d", currline, &port);
     if (strcmp(currline, "port") != 0) {
-        printf("load port error");
+        printf("读取端口号错误");
         free(currline);
         exit(-1);
     }
@@ -47,7 +47,7 @@ void loadConf()
 
     fscanf(fp, "%s %s", currline, root);
     if (strcmp(currline, "root") != 0) {
-        printf("load root error");
+        printf("读取根目录错误");
         free(currline);
         free(root);
         exit(-1);

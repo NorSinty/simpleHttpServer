@@ -14,6 +14,7 @@ int scan(char* in, char* out, int start, int max)
     int count = 0;
     int out_count = 0;
 
+    // 循环直到读取空、CRLF等特定字符或超出长度
     while (i < strlen(in)) 
     {
         if ( *(in+i) == ' ' || *(in+i) == '\t' || *(in+i) == '\n' || *(in+i) == '\r') 
@@ -34,7 +35,8 @@ int scan(char* in, char* out, int start, int max)
 
     *(out+out_count) = '\0';
 
-    for( i=i+1; i < strlen(in); i++)
+    // 找到下个单词之前的空位置
+    for (i = i+1; i < strlen(in); i++)
     {
         if ( *(in+i) != ' ' || *(in+i) != '\t' || *(in+i) != '\n' || *(in+i) != '\r') 
         {
