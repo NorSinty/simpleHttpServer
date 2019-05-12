@@ -91,14 +91,14 @@ int handleHttpGET(int sockfd, char* message, char* root)
 
     fp = fopen(path, "rb");
     if (fp == NULL) {
-        perror("Unable to open file");
+        perror("unable open file");
         sendString(sockfd, "404 Not Found");
         goto err;
     }
 
     length = Content_Length(fp);
-    if (length < 0) {
-        printf("filesize is zero\n");
+    if (length <= 0) {
+        printf("文件大小为零\n");
         goto err;
     }
 

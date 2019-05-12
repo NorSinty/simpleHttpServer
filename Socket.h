@@ -101,7 +101,7 @@ void acceptConnection(int listenfd, char *root)
 }
 */
 
-void process(int listenfd, char *root) 
+void process(int listenfd, char* root) 
 {
     int connfd;
     int num;
@@ -123,7 +123,7 @@ void process(int listenfd, char *root)
     }
 
     while(1) {
-        printf("pid:%d is working\n", getpid());
+        //printf("pid:%d is working\n", getpid());
         // 等待事件发生
         num = epoll_wait(epollfd, events, MAX_EVENT_NUM, -1);
         if (num == -1) {
@@ -168,26 +168,28 @@ void process(int listenfd, char *root)
 
 void acceptConnection(int listenfd, char *root)
 {
-    int cpu_core_num;
-    // struct sockaddr_in cliaddr;
+    // 多进程
+    // int cpu_core_num;
 
-    // int childpid;
+    // signal(SIGCHLD, sig_chld);
 
-    signal(SIGCHLD, sig_chld);
+    // cpu_core_num = get_nprocs();
+    // printf("cpu core num: %d\n", cpu_core_num);
 
-    cpu_core_num = get_nprocs();
-    printf("cpu core num: %d\n", cpu_core_num);
+    // for (int i = 0; i < cpu_core_num; i++) {
+    //     pid_t pid = fork();
+    //     if (pid == 0) {    // 子进程
+    //         process(listenfd, root);
+    //         exit(0);
+    //     }
+    // }
 
-    for (int i = 0; i < cpu_core_num; i++) {
-        pid_t pid = fork();
-        if (pid == 0) {    // 子进程执行此条件分支
-            process(listenfd, root);
-            exit(0);
-        }
-    }
-
-    while (1) {
-        sleep(1);
-    }
+    // while (1) {
+    //     sleep(1);
+    // }
+    
+    // 单进程
+    process(listenfd, root);
+    
 }
 
